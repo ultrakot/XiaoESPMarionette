@@ -1,0 +1,11 @@
+# The JSON config file will look like:
+{
+    "positions": {
+        "home": 0,
+        "upper_limit": 0,
+        "lower_limit": 0,
+        "register_pos": 0
+    },
+    "last_stall": 1500,
+    "current_position": 900
+}
