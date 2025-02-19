@@ -11,7 +11,7 @@ def main():
     buttons = ButtonControl(stepper, tmc_spi)
     
     # Perform initial homing
-    buttons.home()
+    #buttons.home()
     
     # Run the move routine once
     move_between_positions(buttons)

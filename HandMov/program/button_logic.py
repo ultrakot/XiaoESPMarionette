@@ -60,13 +60,15 @@ class ButtonControl:
     def handle_plus(self, pin):
         """Handle plus button press/release"""
         if not pin.value():  # Button pressed
-            self.stepper.single_step(1)
+            #self.stepper.single_step(1)
+            self.stepper.move_steps(1000,1)
             print("+ step")
     
     def handle_minus(self, pin):
         """Handle minus button press/release"""
         if not pin.value():  # Button pressed
-            self.stepper.single_step(0)
+            #self.stepper.single_step(0)
+            self.stepper.move_steps(1000,0)
             print("- step")
     
     def handle_pos1(self, pin):
@@ -111,6 +113,7 @@ class ButtonControl:
         # Move negative until stallGuard triggers
         while not self.tmc_spi.check_stall():
             self.stepper.single_step(0)
+            #self.stepper.move_steps(1000,0
             time.sleep_ms(1)
         
         print("Stall detected, moving to home offset...")

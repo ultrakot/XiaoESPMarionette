@@ -76,7 +76,7 @@ class TMC2130_StallTest:
         self.write_reg(0x11, 0x0000000A)
         
         # Set TCOOLTHRS (threshold for enabling coolStep and StallGuard)
-        self.write_reg(0x14, 0x00000000)  # Enable StallGuard at all speeds
+        self.write_reg(0x14, 0x00000064)  
         
         print("StallGuard initialized")
         
@@ -86,7 +86,8 @@ class TMC2130_StallTest:
         self.init_stallguard()
         
         # Test different StallGuard thresholds
-        thresholds = [16, 8, 4, 2, 1, 0, -1, -2, -4, -8]
+        thresholds = [16]
+                      #, 8, 4, 2, 1, 0, -1, -2, -4, -8]
         
         for threshold in thresholds:
             print(f"\nTesting with threshold: {threshold}")

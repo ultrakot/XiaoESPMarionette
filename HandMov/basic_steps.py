@@ -7,13 +7,14 @@ class StepperControl:
         # Pin setup
         self.step_pin = Pin(4, Pin.OUT)
         self.dir_pin = Pin(3, Pin.OUT)
+        #-------------------------------        
         
         # Buttons setup
         self.btn_fwd = Pin(1, Pin.IN, Pin.PULL_UP)
         self.btn_bwd = Pin(2, Pin.IN, Pin.PULL_UP)
-        self.btn_pos1 = Pin(10, Pin.IN, Pin.PULL_UP)
-        self.btn_pos2 = Pin(9, Pin.IN, Pin.PULL_UP)
-        self.btn_pos3 = Pin(8, Pin.IN, Pin.PULL_UP)
+        self.btn_pos1 = Pin(18, Pin.IN, Pin.PULL_UP)
+        self.btn_pos2 = Pin(20, Pin.IN, Pin.PULL_UP)
+        self.btn_pos3 = Pin(19, Pin.IN, Pin.PULL_UP)
         
         # Movement parameters
         self.current_position = 0
@@ -53,24 +54,29 @@ class StepperControl:
         # Forward button
         if not self.btn_fwd.value():
             self.move_steps(100)
+            print("moved forward")
             time.sleep(0.1)  # Debounce delay
             
         # Backward button
         if not self.btn_bwd.value():
             self.move_steps(-100)
+            print("moved backward")
             time.sleep(0.1)
             
         # Position buttons
         if not self.btn_pos1.value():
             self.move_to_position(self.saved_positions[1])
+            print(f"saved position 1: {self.saved_positions[1]}")
             time.sleep(0.1)
             
         if not self.btn_pos2.value():
             self.move_to_position(self.saved_positions[2])
+            print(f"saved position 2: {self.saved_positions[2]}")
             time.sleep(0.1)
             
         if not self.btn_pos3.value():
             self.move_to_position(self.saved_positions[3])
+            print(f"saved position 3: {self.saved_positions[3]}")
             time.sleep(0.1)
 
 def main():

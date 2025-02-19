@@ -26,9 +26,9 @@ class Stepper:
         """Make a single step in specified direction"""
         self.dir_pin.value(direction)
         self.step_pin.value(1)
-        time.sleep_us(10)  # Ensure step pulse width
+        time.sleep_us(5)  # Ensure step pulse width
         self.step_pin.value(0)
-        time.sleep_us(10)
+        time.sleep_us(5)
         self.current_position += (1 if direction else -1)
     
     def move_steps(self, steps, direction):
